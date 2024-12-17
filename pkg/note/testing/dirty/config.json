@@ -1,5 +1,5 @@
 {
-    "directory": "/home/ethanbaker/repos/github.com/ethanbaker/note/pkg/cli/testing/dirty/notes",
+    "directory": "/home/ethanbaker/repos/github.com/ethanbaker/note/pkg/note/testing/dirty/entries",
     "editor": "vi",
-    "defaultAuthor": "Anonymous"
+    "default_author": "Anonymous"
 }

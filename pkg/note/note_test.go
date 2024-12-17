@@ -12,7 +12,7 @@ import (
 // Setup before each tests by initializing a config struct
 func noteTestSetup() *note.Config {
 	return &note.Config{
-		Directory:     "./testing/dirty/notes/",
+		Directory:     "./testing/dirty/entries/",
 		Editor:        "vi",
 		DefaultAuthor: "Ethan",
 	}
