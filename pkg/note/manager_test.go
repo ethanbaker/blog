@@ -106,7 +106,7 @@ func TestGetNote(t *testing.T) {
 	require.NotNil(note.UpdatedAt)
 
 	// Check the content of the associated note file
-	content, err := os.ReadFile("./testing/dirty/notes/note-1.md")
+	content, err := os.ReadFile("./testing/dirty/entries/note-1.md")
 	require.Nil(err)
 	require.Equal("# Note 1\n\n", string(content))
 }
@@ -141,11 +141,11 @@ func TestGetNotes(t *testing.T) {
 	require.NotNil(notes[1].UpdatedAt)
 
 	// Check the content of the associated note files
-	content, err := os.ReadFile("./testing/dirty/notes/note-1.md")
+	content, err := os.ReadFile("./testing/dirty/entries/note-1.md")
 	require.Nil(err)
 	require.Equal("# Note 1\n\n", string(content))
 
-	content, err = os.ReadFile("./testing/dirty/notes/note-2.md")
+	content, err = os.ReadFile("./testing/dirty/entries/note-2.md")
 	require.Nil(err)
 	require.Equal("# Note 2\n\n", string(content))
 }
@@ -171,7 +171,7 @@ func TestDeleteNote(t *testing.T) {
 	require.NotNil(note.UpdatedAt)
 
 	// Check the content of the associated note file
-	content, err := os.ReadFile("./testing/dirty/notes/note-1.md")
+	content, err := os.ReadFile("./testing/dirty/entries/note-1.md")
 	require.Nil(err)
 	require.Equal("# Note 1\n\n", string(content))
 
@@ -182,7 +182,7 @@ func TestDeleteNote(t *testing.T) {
 	require.Nil(manager.GetNote("note-1"))
 
 	// Verify the note file is gone
-	_, err = os.Stat("./testing/dirty/notes/note-1.md")
+	_, err = os.Stat("./testing/dirty/entries/note-1.md")
 	require.True(errors.Is(err, os.ErrNotExist))
 }
 
@@ -235,7 +235,7 @@ func TestLoad(t *testing.T) {
 	require.Nil(err)
 
 	// Modify default paths to test files
-	note.ModifyDefaultDirectoryPath(path.Join(wd, "testing/pristine/notes/"))
+	note.ModifyDefaultDirectoryPath(path.Join(wd, "testing/pristine/notes/entries/"))
 	note.ModifyConfigPath(path.Join(wd, "testing/pristine/config.json"))
 	note.ModifyManagerPath(path.Join(wd, "testing/pristine/manager.json"))
 
@@ -244,7 +244,7 @@ func TestLoad(t *testing.T) {
 	require.Nil(err)
 
 	// Check manager config
-	require.Equal("testing/pristine/notes/", manager.Config.Directory)
+	require.Equal("testing/pristine/entries/", manager.Config.Directory)
 	require.Equal("vi", manager.Config.Editor)
 	require.Equal("John", manager.Config.DefaultAuthor)
 

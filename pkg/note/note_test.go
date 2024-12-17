@@ -3,6 +3,7 @@ package note_test
 import (
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/ethanbaker/note/pkg/note"
 	"github.com/stretchr/testify/assert"
@@ -12,7 +13,7 @@ import (
 // Setup before each tests by initializing a config struct
 func noteTestSetup() *note.Config {
 	return &note.Config{
-		Directory:     "./testing/dirty/notes/",
+		Directory:     "./testing/dirty/entries/",
 		Editor:        "vi",
 		DefaultAuthor: "Ethan",
 	}
@@ -58,8 +59,8 @@ func TestNoteAsMarkdown(t *testing.T) {
 	// Check line equality
 	assert.Equal("---", lines[0])
 	assert.Equal("author: Ethan", lines[1])
-	assert.Equal("createdAt: "+note.CreatedAt.Format("2006-01-02T15:04:05-07:00"), lines[2])
-	assert.Equal("updatedAt: "+note.UpdatedAt.Format("2006-01-02T15:04:05-07:00"), lines[3])
+	assert.Equal("createdAt: "+note.CreatedAt.Format(time.RFC3339), lines[2])
+	assert.Equal("updatedAt: "+note.UpdatedAt.Format(time.RFC3339), lines[3])
 	assert.Equal("---", lines[4])
 	assert.Equal("", lines[5])
 	assert.Equal("# Test Note", lines[6])

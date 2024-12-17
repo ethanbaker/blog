@@ -1,5 +1,5 @@
 {
-    "directory": "testing/pristine/notes/",
+    "directory": "testing/pristine/entries/",
     "editor": "vi",
-    "defaultAuthor": "John"
+    "default_author": "John"
 }
