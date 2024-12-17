@@ -1,4 +1,4 @@
-package cli
+package note
 
 import (
 	"fmt"
@@ -10,22 +10,22 @@ import (
 	"golang.org/x/text/language"
 )
 
-// Only allow a-z, A-Z, 0-9, '-', and '_' for valid article names
+// Only allow a-z, A-Z, 0-9, '-', and '_' for valid note names
 var filenameMatcher = regexp.MustCompile(`^[a-zA-Z0-9_-]+$`)
 
-// Article defines a struct to contain and wrap a text file that a user
-// can edit. This article is stored as a markdown file with associated
-// metadata. The article's content is assumed to be markdown and will be
+// Note defines a struct to contain and wrap a text file that a user
+// can edit. This note is stored as a markdown file with associated
+// metadata. The note's content is assumed to be markdown and will be
 // rendered as so
-type Article struct {
-	Metadata        // Article Metadata
-	Content  string `json:"-"` // Article content (assumed to be markdown format)
+type Note struct {
+	Metadata        // Note Metadata
+	Content  string `json:"-"` // Note content (assumed to be markdown format)
 }
 
-// Generate and return markdown representation of the article. The article
+// Generate and return markdown representation of the note. The note
 // begins with yaml metadata and then contains markdown content after two
 // new lines
-func (a *Article) AsMarkdown() string {
+func (a *Note) AsMarkdown() string {
 	output := ""
 
 	// Create yaml metadata at the top of the output
@@ -41,22 +41,22 @@ func (a *Article) AsMarkdown() string {
 	return output
 }
 
-// Generate and return an HTML representation of the article. The article's
-// metadata is rendered into a template, and then then article's markdown
+// Generate and return an HTML representation of the note. The note's
+// metadata is rendered into a template, and then then note's markdown
 // content is rendered as HTML using an external tool
-func (a *Article) AsHTML() string {
+func (a *Note) AsHTML() string {
 	// Not implemented
 	return ""
 }
 
-// Create a new article from a provided configuration and filename
-func NewArticle(config *Config, filename string) (*Article, error) {
+// Create a new note from a provided configuration and filename
+func NewNote(config *Config, filename string) (*Note, error) {
 	// Make sure the filename is valid
 	if !filenameMatcher.MatchString(filename) {
 		return nil, fmt.Errorf("invalid name '%s'", filename)
 	}
 
-	// Generate article title
+	// Generate note title
 	titleComponents := strings.Split(filename, "-")
 	title := ""
 	for _, t := range titleComponents {
@@ -64,7 +64,7 @@ func NewArticle(config *Config, filename string) (*Article, error) {
 	}
 	title = strings.Trim(title, " ")
 
-	return &Article{
+	return &Note{
 		Metadata: Metadata{
 			Filename:  filename,
 			Author:    config.DefaultAuthor,
