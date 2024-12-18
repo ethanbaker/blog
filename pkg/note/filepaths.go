@@ -1,13 +1,30 @@
-package cli
+package note
 
-// Path to the directory where articles are stored
-var defaultDirectoryPath = "~/.local/share/notes/articles/"
+import (
+	"os"
+	"path"
+)
+
+// Path to the directory where notes are stored
+var defaultDirectoryPath string
 
 // Path to the configuration file for the system
-var configPath = "~/.config/note.json"
+var configPath string
 
-// Path to the manager file where article metadata is stored
-var managerPath = "~/.local/share/notes/manager.json"
+// Path to the manager file where note metadata is stored
+var managerPath string
+
+// Get the user's home directory to concatenate with default paths
+func init() {
+	home, err := os.UserHomeDir()
+	if err != nil {
+		panic(err)
+	}
+
+	defaultDirectoryPath = path.Join(home, ".local/share/notes/entries/")
+	configPath = path.Join(home, ".config/note.json")
+	managerPath = path.Join(home, ".local/share/notes/manager.json")
+}
 
 // Change the default directory path. This is an experimental function and
 // should be avoided unless absolutely necessary

@@ -1,13 +1,13 @@
 {
-    "articles": [
+    "notes": [
         {
-            "filename": "article-1",
+            "filename": "note-1",
             "author": "John",
             "createdAt": "2024-12-14T21:05:37.656254797-05:00",
             "updatedAt": "2024-12-14T21:05:37.656255044-05:00"
         },
         {
-            "filename": "article-2",
+            "filename": "note-2",
             "author": "Mary",
             "createdAt": "2024-12-14T21:05:37.656817345-05:00",
             "updatedAt": "2024-12-14T21:05:37.656817537-05:00"
