@@ -25,7 +25,7 @@ func main() {
 	// Create new root command
 	cmd := &cobra.Command{
 		Use:   "note",
-		Short: "Note & note management CLI tool",
+		Short: "Note management CLI tool",
 		Long:  "A command-line tool to manage notes, notes, and configurations",
 		CompletionOptions: cobra.CompletionOptions{
 			DisableDefaultCmd: true,

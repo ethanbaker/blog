@@ -1,4 +1,4 @@
-name: go-test
+name: go-coverage-badge
 
 on: [push]
 
@@ -16,9 +16,27 @@ jobs:
     - name: Build
       run: go build -v ./...
 
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup
+      uses: actions/setup-go@v3
+      with:
+        go-version: stable
+
+    - name: Build
+      run: go build -v ./...
+
     - name: Test
       run: go test -v ./...
 
+  generate-coverage:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
     - name: Update coverage badge
       uses: ncruces/go-coverage-report@main
       with:
