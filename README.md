@@ -14,7 +14,7 @@ Here are different preset "variables" that you can search and replace in this te
 
 
 <!-- PROJECT SHIELDS/BUTTONS -->
-![1.0.0 alpha](https://img.shields.io/badge/status-1.0.0_alpha-red)
+![1.0.0](https://img.shields.io/badge/status-1.0.0-red)
 [![Go Coverage](https://github.com/ethanbaker/note/wiki/coverage.svg)](https://raw.githack.com/wiki/ethanbaker/note/coverage.html)
 [![License][license-shield]][license-url]
 [![Contributors][contributors-shield]][contributors-url]
